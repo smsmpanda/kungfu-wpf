@@ -1,0 +1,25 @@
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.exe
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.deps.json
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.runtimeconfig.json
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.runtimeconfig.dev.json
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.dll
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\bin\Debug\net5.0-windows\KungfuWpf.pdb
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.csproj.AssemblyReference.cache
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\MainWindow.g.cs
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\App.g.cs
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf_MarkupCompile.cache
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf_MarkupCompile.lref
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\MainWindow.baml
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.g.resources
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.GeneratedMSBuildEditorConfig.editorconfig
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.AssemblyInfoInputs.cache
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.AssemblyInfo.cs
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.csproj.CoreCompileInputs.cache
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.dll
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\refint\KungfuWpf.dll
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.pdb
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\KungfuWpf.genruntimeconfig.cache
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\ref\KungfuWpf.dll
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\User Controls\LimitedInputUserControl.g.cs
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Persondev\github.com\KungfuWpf\KungfuWpf\obj\Debug\net5.0-windows\User Controls\LimitedInputUserControl.baml
