@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace KungfuWpf
 {
@@ -23,55 +25,42 @@ namespace KungfuWpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<User> users = new ObservableCollection<User>();
+        private MediaPlayer mediaPlayer = new MediaPlayer();
         public MainWindow()
         {
             InitializeComponent();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+                mediaPlayer.Open(new Uri(openFileDialog.FileName));
 
-            users.Add(new User() { Name = "John Doe" });
-            users.Add(new User() { Name = "Jane Doe" });
-
-            lbUsers.ItemsSource = users;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
-            users.Add(new User() { Name = "New user" });
+            if (mediaPlayer.Source != null)
+                lblStatus.Content = String.Format("{0} / {1}", mediaPlayer.Position.ToString(@"mm\:ss"), mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            else
+                lblStatus.Content = "No file selected...";
         }
 
-        private void btnChangeUser_Click(object sender, RoutedEventArgs e)
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if (lbUsers.SelectedItem != null)
-                (lbUsers.SelectedItem as User).Name = "Random Name";
+            mediaPlayer.Play();
         }
 
-        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            if (lbUsers.SelectedItem != null)
-                users.Remove(lbUsers.SelectedItem as User);
-        }
-    }
-    public class User : INotifyPropertyChanged
-    {
-        private string name;
-        public string Name
-        {
-            get => name;
-            set 
-            {
-                if (this.name != value) 
-                {
-                    this.name = value;
-                    this.NotifyPropertyChanged("Name");
-                }
-            }
+            mediaPlayer.Pause();
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void NotifyPropertyChanged(string propName)
+        private void btnStop_Click(object sender, RoutedEventArgs e)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            mediaPlayer.Stop();
         }
     }
 }

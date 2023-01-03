@@ -3,24 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:KungfuWpf"
-        xmlns:uc="clr-namespace:KungfuWpf.User_Controls"
         mc:Ignorable="d"
-        Title="Kungfu WPF" Height="150" Width="300">
-    <!--<Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <uc:LimitedInputUserControl Title="Enter title:" MaxLength="30" Height="50" />
-        <uc:LimitedInputUserControl Title="Enter description:" MaxLength="140" Grid.Row="1" />
-    </Grid>-->
-    <DockPanel Margin="10">
-        <StackPanel DockPanel.Dock="Right">
-            <Button Name="btnAddUser" Click="btnAddUser_Click">Add User</Button>
-            <Button Name="btnChangeUser" Click="btnChangeUser_Click" Margin="0,5">Change user</Button>
-            <Button Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete user</Button>
-        </StackPanel>
-        <ListBox Name="lbUsers" DisplayMemberPath="Name"></ListBox>
-    </DockPanel>
+        Title="Kungfu WPF" Height="120" Width="300">
+    <StackPanel Margin="10">
+        <Label Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" Margin="5" />
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Name="btnPlay" Click="btnPlay_Click">Play</Button>
+            <Button Name="btnPause" Margin="5,0" Click="btnPause_Click">Pause</Button>
+            <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
+        </WrapPanel>
+    </StackPanel>
 </Window>
