@@ -10,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KungfuWpf.User_Controls
+namespace KungfuWpf.Views
 {
     /// <summary>
-    /// LimitedInputUserControl.xaml 的交互逻辑
+    /// LearnSytleWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LimitedInputUserControl : UserControl
+    public partial class LearnSytleWindow : Window
     {
-        public LimitedInputUserControl()
+        public LearnSytleWindow()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
-
-        public string Title { get; set; }
-        public int MaxLength { get; set; }
     }
 }
