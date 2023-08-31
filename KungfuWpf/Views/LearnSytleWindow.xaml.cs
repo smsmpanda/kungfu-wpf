@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KungfuWpf.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace KungfuWpf.Views
         public LearnSytleWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
     }
 }
