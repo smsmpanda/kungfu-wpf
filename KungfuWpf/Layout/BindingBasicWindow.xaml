@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="KungfuWpf.Layout.BindingBasicWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KungfuWpf.Layout"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="BindingBasicWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <FontFamily x:Key="myFont">哈哈哈哈</FontFamily>
+    </Window.Resources>
+    <Grid>
+        <!--  source  -->
+        <Slider
+            Name="mySlider"
+            Margin="1"
+            IsSnapToTickEnabled="True"
+            Maximum="500"
+            Minimum="1" />
+        <TextBox
+            Width="200"
+            Height="30"
+            Margin="10"
+            FontSize="12"
+            Text="{Binding ElementName=mySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            Margin="20"
+            FontFamily="14px"
+            Text="{Binding Source={StaticResource myFont}, Path=BaseUri}" />
+
+        <!--  DataContext  -->
+        <StackPanel Margin="40" DataContext="{x:Static SystemFonts.IconFontFamily}">
+            <TextBlock Text="{Binding Path=Source}" />
+        </StackPanel>
+    </Grid>
+</Window>
