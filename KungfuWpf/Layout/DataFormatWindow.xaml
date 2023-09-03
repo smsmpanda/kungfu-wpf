@@ -1,0 +1,141 @@
+﻿<Window
+    x:Class="KungfuWpf.Layout.DataFormatWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KungfuWpf.Layout"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="DataFormatWindow"
+    Width="520"
+    Height="450"
+    mc:Ignorable="d">
+    <Border
+        Margin="5"
+        Background="#ccc"
+        BorderBrush="AliceBlue"
+        BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DockPanel LastChildFill="True">
+                <Button
+                    Height="30"
+                    VerticalAlignment="Top"
+                    Click="Button_Click"
+                    DockPanel.Dock="Top">
+                    获取车辆信息
+                </Button>
+                <ListBox Name="myCarList" DisplayMemberPath="Name" />
+            </DockPanel>
+            <Grid
+                Grid.Column="1"
+                Margin="10"
+                DataContext="{Binding ElementName=myCarList, Path=SelectedItem}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Margin="7"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold">
+                    编号
+                </TextBlock>
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Text="{Binding Path=Id}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="名称" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="5"
+                    Text="{Binding Path=Name}" />
+                <TextBlock
+                    Grid.Row="2"
+                    Margin="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="颜色" />
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="5"
+                    Text="{Binding Path=Color}" />
+                <TextBlock
+                    Grid.Row="3"
+                    Margin="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="宽度" />
+                <TextBox
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="5"
+                    Text="{Binding Path=Width, StringFormat={}{0:C}}" />
+                <TextBlock
+                    Grid.Row="4"
+                    Margin="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="高度" />
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="5"
+                    Text="{Binding Path=Height, TargetNullValue=暂无数据}" />
+                <TextBlock
+                    Grid.Row="5"
+                    Margin="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Text="描述" />
+
+                <TextBox
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    Margin="7"
+                    Text="{Binding Path=Description}"
+                    TextWrapping="Wrap" />
+
+
+                <Grid
+                    Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    Margin="7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
