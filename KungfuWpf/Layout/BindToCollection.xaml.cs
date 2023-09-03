@@ -87,5 +87,13 @@ namespace KungfuWpf.Layout
                 }
             };
         }
+
+        private void Grid_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if(e.Action ==  ValidationErrorEventAction.Added)
+            {
+                MessageBox.Show(e.Error.ErrorContent.ToString());
+            }
+        }
     }
 }
