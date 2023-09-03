@@ -10,16 +10,40 @@
     Width="380"
     Height="500"
     mc:Ignorable="d">
-
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <TextBlock
+                                DockPanel.Dock="Right"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Foreground="Red"
+                                ToolTip="{Binding ElementName=adornetPlaceholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                *
+                            </TextBlock>
+                            <Border BorderBrush="Green" BorderThickness="1">
+                                <AdornedElementPlaceholder Name="adornetPlaceholder" />
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Border
         Margin="4"
         Background="#ccc"
         BorderThickness="3"
         CornerRadius="4">
-        <Grid
-            Margin="10"
-            DataContext="{Binding ElementName=myCarList, Path=SelectedItem}"
-            Validation.Error="Grid_Error">
+        <Grid Margin="10" DataContext="{Binding ElementName=myCarList, Path=SelectedItem}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="35" />
                 <RowDefinition Height="35" />
