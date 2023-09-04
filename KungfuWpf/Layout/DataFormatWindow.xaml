@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:KungfuWpf.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="DataFormatWindow"
-    Width="960"
+    Width="1000"
     Height="740"
     mc:Ignorable="d">
     <Window.Resources>
@@ -19,7 +19,7 @@
         BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="300" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <DockPanel LastChildFill="True">
@@ -33,7 +33,23 @@
                 <ListBox
                     Name="myCarList"
                     DisplayMemberPath="Name"
-                    ItemStringFormat="Car product {0:C}" />
+                    ItemStringFormat="Car product {0:C}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="ListBoxItem.Background" Value="LightSteelBlue" />
+                            <Setter Property="ListBoxItem.Margin" Value="5" />
+                            <Setter Property="ListBoxItem.Padding" Value="5" />
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="Background" Value="DarkRed" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="BorderBrush" Value="Black" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </DockPanel>
             <Grid
                 Grid.Column="1"
