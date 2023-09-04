@@ -36,7 +36,8 @@ namespace KungfuWpf.Layout
                     Name = "Build Your Dream - HAN",
                     Color = "White",
                     Width = 5.2f,
-                    Description = "Build Your Dream - 比亚迪 - 启迪世界！"
+                    Description = "Build Your Dream - 比亚迪 - 启迪世界！",
+                    ImagePath = "BYD.png"
                 },
                 new Car
                 {
@@ -44,7 +45,8 @@ namespace KungfuWpf.Layout
                     Name = "Geely Automobile - XINGYAO",
                     Color = "Black",
                     Width = 5.3f,
-                    Description = "吉利汽车 - 世界帝豪！"
+                    Description = "吉利汽车 - 世界帝豪！",
+                    ImagePath = "JL.png"
                 },
                 new Car
                 {
@@ -52,7 +54,8 @@ namespace KungfuWpf.Layout
                     Name = "XIAO PENG",
                     Color = "Fluorescent",
                     Width = 5.4f,
-                    Description = "超长续航-1300KM，值得你拥有！"
+                    Description = "超长续航-1300KM，值得你拥有！",
+                    ImagePath = "XP.png"
                 },
                 new Car
                 {
@@ -60,7 +63,8 @@ namespace KungfuWpf.Layout
                     Name = "LI XIANG ONE",
                     Color = "Silver",
                     Width = 5.5f,
-                    Description = "土豪的世界你不懂，吊打一切！"
+                    Description = "土豪的世界你不懂，吊打一切！",
+                    ImagePath = "LX.png"
                 },
                 new Car
                 {
@@ -68,7 +72,8 @@ namespace KungfuWpf.Layout
                     Name = "AITO",
                     Color = "White",
                     Width = 5.45f,
-                    Description = "世界之光 -  HUAWEI"
+                    Description = "世界之光 -  HUAWEI",
+                    ImagePath = "AITO.png"
                 },
                 new Car
                 {
@@ -76,15 +81,17 @@ namespace KungfuWpf.Layout
                     Name = "Fei Fan",
                     Color = "White",
                     Width = 5.7f,
-                    Description = "非凡体验 -  非凡"
+                    Description = "非凡体验 -  非凡",
+                    ImagePath = "FF.png"
                 },
                 new Car
                 {
                     Id = 7,
-                    Name = "Zooker",
+                    Name = "Chang An",
                     Color = "White",
                     Width = 5.45f,
-                    Description = "安全驾驶 -  Zooker"
+                    Description = "安全驾驶 -  Zooker",
+                    ImagePath = "CN.png"
                 }
             };
 

@@ -78,5 +78,16 @@ namespace KungfuWpf.Model
                 OnPropertyChanged(new PropertyChangedEventArgs("Description"));
             }
         }
+
+        private string _imagepath;
+        public string ImagePath
+        {
+            get => _imagepath;
+            set
+            {
+                _imagepath = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("ImagePath"));
+            }
+        }
     }
 }
