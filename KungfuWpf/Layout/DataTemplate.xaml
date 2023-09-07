@@ -34,6 +34,11 @@
                 <ListBox Name="myCarList" HorizontalContentAlignment="Stretch">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=Color}" Value="White">
+                                    <Setter Property="ListBoxItem.Foreground" Value="Red" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
                             <Border
                                 Margin="5"
                                 BorderBrush="SteelBlue"
@@ -43,9 +48,16 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
                                     <TextBlock Grid.Row="1" Text="{Binding Path=Color}" />
+                                    <Image
+                                        Grid.Row="2"
+                                        Grid.RowSpan="2"
+                                        Width="200"
+                                        HorizontalAlignment="Center"
+                                        Source="{Binding Path=ImagePath, Converter={StaticResource CarImagePathConverter}}" />
                                 </Grid>
                             </Border>
                         </DataTemplate>
