@@ -19,7 +19,7 @@
             <Setter Property="ItemContainerStyle">
                 <Setter.Value>
                     <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="LightBlue" />
+                        <Setter Property="Background" Value="red" />
                         <Setter Property="Padding" Value="5" />
                         <Setter Property="Margin" Value="2" />
                         <Setter Property="Template">
@@ -55,16 +55,20 @@
                     DockPanel.Dock="Top">
                     获取车辆信息
                 </Button>
-                <!--<ListBox
+                <ListBox
                     Name="myCarList"
+                    AlternationCount="2"
                     DisplayMemberPath="Name"
-                    ItemStringFormat="Car product {0:C}"
+                    ItemStringFormat="Car product {0:C}">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="ListBoxItem.Background" Value="LightSteelBlue" />
                             <Setter Property="ListBoxItem.Margin" Value="5" />
                             <Setter Property="ListBoxItem.Padding" Value="5" />
                             <Style.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                </Trigger>
                                 <Trigger Property="IsSelected" Value="true">
                                     <Setter Property="Background" Value="DarkRed" />
                                     <Setter Property="Foreground" Value="White" />
@@ -74,13 +78,13 @@
                             </Style.Triggers>
                         </Style>
                     </ListBox.ItemContainerStyle>
-                </ListBox>-->
-                <ListBox
+                </ListBox>
+                <!--<ListBox
                     Name="myCarList"
                     AlternationCount="1"
                     DisplayMemberPath="Name"
                     ItemStringFormat="Car product {0:C}"
-                    Style="{StaticResource RadioButtonListStyle}" />
+                    Style="{StaticResource RadioButtonListStyle}" />-->
             </DockPanel>
             <Grid
                 Grid.Column="1"
