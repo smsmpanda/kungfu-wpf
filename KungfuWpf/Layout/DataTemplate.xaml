@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:KungfuWpf.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tplselect="clr-namespace:KungfuWpf.DataTemplateSelectors"
     Title="DataTemplate"
     Width="1000"
     Height="740"
@@ -42,6 +43,75 @@
                 </Grid>
             </Border>
         </DataTemplate>
+
+        <!--  模板选择器  -->
+        <DataTemplate x:Key="DefaultSaleTemplate">
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=Color}" Value="White">
+                    <Setter Property="ListBoxItem.Foreground" Value="Red" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+            <Border
+                Margin="5"
+                BorderBrush="blue"
+                BorderThickness="1"
+                CornerRadius="4">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
+                    <TextBlock Grid.Row="1" Text="{Binding Path=Color}" />
+                    <Image
+                        Grid.Row="2"
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        Source="{Binding Path=ImagePath, Converter={StaticResource CarImagePathConverter}}" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Margin="7"
+                        HorizontalAlignment="right"
+                        FontWeight="Bold"
+                        Foreground="SkyBlue"
+                        Text="{Binding Path=Description}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <!--  模板选择器  -->
+        <DataTemplate x:Key="OnlineSaleTemplate">
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=Color}" Value="White">
+                    <Setter Property="ListBoxItem.Foreground" Value="Red" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+            <Border
+                Margin="5"
+                BorderBrush="SkyBlue"
+                BorderThickness="1"
+                CornerRadius="4">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
+                    <TextBlock Grid.Row="1" Text="{Binding Path=Color}" />
+                    <Image
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        Source="{Binding Path=ImagePath, Converter={StaticResource CarImagePathConverter}}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+
     </Window.Resources>
     <Border
         Margin="5"
@@ -61,10 +131,19 @@
                     DockPanel.Dock="Top">
                     获取车辆信息
                 </Button>
-                <ListBox
+                <!--<ListBox
                     Name="myCarList"
                     HorizontalContentAlignment="Stretch"
-                    ItemTemplate="{StaticResource CarDataTemplate}" />
+                    ItemTemplate="{StaticResource CarDataTemplate}" />-->
+                <ListBox Name="myCarList" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplateSelector>
+                        <tplselect:SaleTypeTemplateSelector
+                            DefaultSaleTemplate="{StaticResource DefaultSaleTemplate}"
+                            OnlineSaleCarTemplate="{StaticResource OnlineSaleTemplate}"
+                            PropertyToEvaluate="SaleType"
+                            PropertyValue="Online" />
+                    </ListBox.ItemTemplateSelector>
+                </ListBox>
             </DockPanel>
             <Grid
                 Grid.Column="1"

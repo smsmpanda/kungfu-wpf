@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -89,5 +90,18 @@ namespace KungfuWpf.Model
                 OnPropertyChanged(new PropertyChangedEventArgs("ImagePath"));
             }
         }
+
+        private string _saletype;
+        public string SaleType
+        {
+            get => _saletype;
+            set
+            {
+                _saletype = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("SaleType"));
+            }
+        }
     }
 }
+
+#nullable restore

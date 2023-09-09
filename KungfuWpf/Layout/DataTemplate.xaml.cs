@@ -37,7 +37,9 @@ namespace KungfuWpf.Layout
                     Color = "White",
                     Width = 5.2f,
                     Description = "Build Your Dream - 比亚迪 - 启迪世界！",
-                    ImagePath = "BYD.png"
+                    ImagePath = "BYD.png",
+                    Height = 1.45f,
+                    SaleType = "Online"
                 },
                 new Car
                 {
@@ -46,7 +48,9 @@ namespace KungfuWpf.Layout
                     Color = "Black",
                     Width = 5.3f,
                     Description = "吉利汽车 - 世界帝豪！",
-                    ImagePath = "JL.png"
+                    ImagePath = "JL.png",
+                    Height = 1.48f,
+                    SaleType = "Offline"
                 },
                 new Car
                 {
@@ -55,7 +59,9 @@ namespace KungfuWpf.Layout
                     Color = "Fluorescent",
                     Width = 5.4f,
                     Description = "超长续航-1300KM，值得你拥有！",
-                    ImagePath = "XP.png"
+                    ImagePath = "XP.png",
+                    Height = 1.58f,
+                    SaleType = "Offline"
                 },
                 new Car
                 {
@@ -64,7 +70,9 @@ namespace KungfuWpf.Layout
                     Color = "Silver",
                     Width = 5.5f,
                     Description = "土豪的世界你不懂，吊打一切！",
-                    ImagePath = "LX.png"
+                    ImagePath = "LX.png",
+                    Height = 1.51f,
+                    SaleType = "Online"
                 },
                 new Car
                 {
@@ -73,7 +81,9 @@ namespace KungfuWpf.Layout
                     Color = "White",
                     Width = 5.45f,
                     Description = "世界之光 -  HUAWEI",
-                    ImagePath = "AITO.png"
+                    ImagePath = "AITO.png",
+                    Height = 1.31f,
+                    SaleType = "Online"
                 },
                 new Car
                 {
@@ -82,7 +92,9 @@ namespace KungfuWpf.Layout
                     Color = "White",
                     Width = 5.7f,
                     Description = "非凡体验 -  非凡",
-                    ImagePath = "FF.png"
+                    ImagePath = "FF.png",
+                    Height = 1.56f,
+                    SaleType = "Offline"
                 },
                 new Car
                 {
@@ -91,7 +103,9 @@ namespace KungfuWpf.Layout
                     Color = "White",
                     Width = 5.45f,
                     Description = "安全驾驶 -  Zooker",
-                    ImagePath = "CN.png"
+                    ImagePath = "CN.png",
+                    Height = 1.57f,
+                    SaleType = "Online"
                 }
             };
 
