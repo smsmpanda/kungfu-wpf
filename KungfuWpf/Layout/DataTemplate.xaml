@@ -12,6 +12,36 @@
     <Window.Resources>
         <!--  转换器  -->
         <local:CarImagePathConverter x:Key="CarImagePathConverter" />
+
+        <!--  数据模板：分离与重用  -->
+        <DataTemplate x:Key="CarDataTemplate">
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=Color}" Value="White">
+                    <Setter Property="ListBoxItem.Foreground" Value="Red" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+            <Border
+                Margin="5"
+                BorderBrush="SteelBlue"
+                BorderThickness="1"
+                CornerRadius="4">
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
+                    <TextBlock Grid.Row="1" Text="{Binding Path=Color}" />
+                    <Image
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        Source="{Binding Path=ImagePath, Converter={StaticResource CarImagePathConverter}}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
     </Window.Resources>
     <Border
         Margin="5"
@@ -31,38 +61,10 @@
                     DockPanel.Dock="Top">
                     获取车辆信息
                 </Button>
-                <ListBox Name="myCarList" HorizontalContentAlignment="Stretch">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <DataTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Path=Color}" Value="White">
-                                    <Setter Property="ListBoxItem.Foreground" Value="Red" />
-                                </DataTrigger>
-                            </DataTemplate.Triggers>
-                            <Border
-                                Margin="5"
-                                BorderBrush="SteelBlue"
-                                BorderThickness="1"
-                                CornerRadius="4">
-                                <Grid Margin="3">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
-                                    <TextBlock Grid.Row="1" Text="{Binding Path=Color}" />
-                                    <Image
-                                        Grid.Row="2"
-                                        Grid.RowSpan="2"
-                                        Width="200"
-                                        HorizontalAlignment="Center"
-                                        Source="{Binding Path=ImagePath, Converter={StaticResource CarImagePathConverter}}" />
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <ListBox
+                    Name="myCarList"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource CarDataTemplate}" />
             </DockPanel>
             <Grid
                 Grid.Column="1"
