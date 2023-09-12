@@ -4,6 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:KungfuWpf"
     DispatcherUnhandledException="Application_DispatcherUnhandledException"
-    StartupUri="Layout/WrapperList.xaml">
+    StartupUri="Layout/GluttonousSnake.xaml">
     <Application.Resources />
 </Application>
