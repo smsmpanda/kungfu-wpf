@@ -51,12 +51,9 @@ namespace KungfuWpf.Layout
 
         private DispatcherTimer gameTickTimer = new DispatcherTimer();
 
-        private SpeechSynthesizer speechSynthesizer= new SpeechSynthesizer();
+        private SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
 
-        public ObservableCollection<SnakeHighscore> HighscoreList
-        {
-            get; set;
-        } = new ObservableCollection<SnakeHighscore>();
+        public ObservableCollection<SnakeHighscore> HighscoreList { get; set; } = new ObservableCollection<SnakeHighscore>();
 
         public GluttonousSnake()
         {
@@ -109,6 +106,9 @@ namespace KungfuWpf.Layout
             }
         }
 
+        /// <summary>
+        /// 画蛇
+        /// </summary>
         private void DrawSnake()
         {
             foreach (var snakePart in snakeParts)
@@ -172,36 +172,57 @@ namespace KungfuWpf.Layout
             DoCollisionCheck();
         }
 
-
+        /// <summary>
+        /// 游戏开始，设置基础参数
+        /// </summary>
         private void StartNewGame()
         {
+            //隐藏游戏画布上方的所有信息
             bdrWelcomeMessage.Visibility = Visibility.Collapsed;
             bdrHighscoreList.Visibility = Visibility.Collapsed;
             bdrEndOfGame.Visibility = Visibility.Collapsed;
 
-            // Remove potential dead snake parts and leftover food...
+            //清除蛇身所有元素
             foreach (SnakePart snakeBodyPart in snakeParts)
             {
                 if (snakeBodyPart.UiElement != null)
+                {
                     GameArea.Children.Remove(snakeBodyPart.UiElement);
+                }
             }
             snakeParts.Clear();
-            if (snakeFood != null)
-                GameArea.Children.Remove(snakeFood);
 
+            //移除食物元素
+            if (snakeFood != null)
+            {
+                GameArea.Children.Remove(snakeFood);
+            }
+
+            //蛇身初始长度
             snakeLength = SnakeStartLength;
+
+            //蛇身初始移动方向
             snakeDirection = SnakeDirection.Right;
             snakeParts.Add(new SnakePart() { Position = new Point(SnakeSquareSize * 5, SnakeSquareSize * 5) });
+
+            //定时器执行间隔
             gameTickTimer.Interval = TimeSpan.FromMilliseconds(SnakeStartSpeed);
 
-            // Draw the snake  
+            //开始画蛇  
             DrawSnake();
+
+            //画食物
             DrawSnakeFood();
-            // Go!          
+
+            //小蛇动起来
             gameTickTimer.IsEnabled = true;
         }
 
 
+        /// <summary>
+        /// 随机获取一个坐标值，用于设置食物位置
+        /// </summary>
+        /// <returns></returns>
         private Point GetNextFoodPosition()
         {
             int maxX = (int)(GameArea.ActualWidth / SnakeSquareSize);
@@ -218,7 +239,9 @@ namespace KungfuWpf.Layout
             return new Point(foodX, foodY);
         }
 
-
+        /// <summary>
+        /// 画食物所在具体的位置
+        /// </summary>
         private void DrawSnakeFood()
         {
             Point foodPosition = GetNextFoodPosition();
@@ -233,6 +256,11 @@ namespace KungfuWpf.Layout
             Canvas.SetLeft(snakeFood, foodPosition.X);
         }
 
+        /// <summary>
+        /// 监听界面按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             SnakeDirection originalSnakeDirection = snakeDirection;
@@ -262,6 +290,9 @@ namespace KungfuWpf.Layout
                 MoveSnake();
         }
 
+        /// <summary>
+        /// 碰撞监测
+        /// </summary>
         private void DoCollisionCheck()
         {
             SnakePart snakeHead = snakeParts[snakeParts.Count - 1];
@@ -280,18 +311,21 @@ namespace KungfuWpf.Layout
 
             foreach (SnakePart snakeBodyPart in snakeParts.Take(snakeParts.Count - 1))
             {
-                 if ((snakeHead.Position.X == snakeBodyPart.Position.X) && (snakeHead.Position.Y == snakeBodyPart.Position.Y))
+                if ((snakeHead.Position.X == snakeBodyPart.Position.X) && (snakeHead.Position.Y == snakeBodyPart.Position.Y))
                     EndGame();
             }
         }
 
+        /// <summary>
+        /// 迟到食物
+        /// </summary>
         private void EatSnakeFood()
         {
             speechSynthesizer.SpeakAsync("yummy");
 
             snakeLength++;
             currentScore++;
-            int timerInterval = Math.Max(SnakeSpeedThreshold, (int)gameTickTimer.Interval.TotalMilliseconds - (currentScore * 2));
+            int timerInterval = Math.Max(SnakeSpeedThreshold, (int)gameTickTimer.Interval.TotalMilliseconds - (currentScore * 5));
             gameTickTimer.Interval = TimeSpan.FromMilliseconds(timerInterval);
             GameArea.Children.Remove(snakeFood);
             DrawSnakeFood();
@@ -304,6 +338,9 @@ namespace KungfuWpf.Layout
             this.tbStatusSpeed.Text = gameTickTimer.Interval.TotalMilliseconds.ToString();
         }
 
+        /// <summary>
+        /// 游戏结束
+        /// </summary>
         private void EndGame()
         {
             bool isNewHighscore = false;
@@ -327,11 +364,22 @@ namespace KungfuWpf.Layout
             SpeakEndOfGameInfo(isNewHighscore);
         }
 
+
+        /// <summary>
+        /// 窗体拖动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -369,7 +417,9 @@ namespace KungfuWpf.Layout
             bdrHighscoreList.Visibility = Visibility.Visible;
         }
 
-
+        /// <summary>
+        /// 加载历史排行榜
+        /// </summary>
         private void LoadHighscoreList()
         {
             if (File.Exists("snake_highscorelist.xml"))
@@ -385,6 +435,9 @@ namespace KungfuWpf.Layout
             }
         }
 
+        /// <summary>
+        /// 保存排行榜
+        /// </summary>
         private void SaveHighscoreList()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<SnakeHighscore>));
@@ -393,7 +446,6 @@ namespace KungfuWpf.Layout
                 serializer.Serialize(writer, this.HighscoreList);
             }
         }
-
 
         private void SpeakEndOfGameInfo(bool isNewHighscore)
         {

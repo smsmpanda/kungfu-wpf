@@ -63,6 +63,9 @@
     <None Update="Images\XIAOPENG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="images\XP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\网络不给力.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

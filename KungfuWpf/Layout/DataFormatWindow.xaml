@@ -67,7 +67,7 @@
                             <Setter Property="ListBoxItem.Padding" Value="5" />
                             <Style.Triggers>
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                                    <Setter Property="Background" Value="LightBlue" />
+                                    <Setter Property="Background" Value="OrangeRed" />
                                 </Trigger>
                                 <Trigger Property="IsSelected" Value="true">
                                     <Setter Property="Background" Value="DarkRed" />
