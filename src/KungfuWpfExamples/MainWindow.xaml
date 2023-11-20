@@ -1,0 +1,29 @@
+﻿<Window
+    x:Class="KungfuWpfExamples.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KungfuWpfExamples"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <ListBox
+                x:Name="lstStudents"
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Students}"
+                SelectionChanged="lstStudents_SelectionChanged" />
+
+            <TextBox x:Name="txtName" Text="{Binding ElementName=lstStudents, Path=SelectedItem.Name}" />
+            <TextBox x:Name="txtAge" Text="{Binding ElementName=lstStudents, Path=SelectedItem.Age}" />
+        </StackPanel>
+
+        <StackPanel>
+            <Button Command="{Binding SayHelloCommand}" Content="Say Hello" />
+            <Button Command="{Binding SayGoodbyeCommand}" Content="Say Goodbye" />
+        </StackPanel>
+    </Grid>
+</Window>
