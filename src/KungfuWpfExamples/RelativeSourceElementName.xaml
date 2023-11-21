@@ -1,0 +1,43 @@
+﻿<Window
+    x:Class="KungfuWpfExamples.RelativeSourceElementName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KungfuWpfExamples"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="RelativeSourceElementName"
+    Width="800"
+    Height="450"
+    Loaded="Window_Onload"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <local:BindingProxy x:Key="MyButton" Data="{Binding ElementName=btn}" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel Name="panel" Margin="10">
+            <!--<TextBlock Text="{Binding ElementName=txt, Path=Text, StringFormat='Input：{0}'}" />
+            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}, Path=Children[2].Text, StringFormat='Input：{0}'}" />-->
+            <StackPanel Name="panel1">
+                <TextBlock Name="tbl" Text="Hello,world!" />
+                <Button
+                    Name="btn"
+                    HorizontalAlignment="Center"
+                    Content="{Binding ElementName=tbl, Path=Text}"
+                    Tag="{Binding ElementName=tbl, Path=Text}">
+                    <Button.ContextMenu>
+                        <ContextMenu Name="context">
+                            <!--<MenuItem Name="menuItem" Header="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.Content}" />-->
+                            <MenuItem Name="menuItem" Header="{Binding Source={StaticResource MyButton}, Path=Data.Content}" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <!--<TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=PlacementTarget.Content}" />-->
+                            <TextBlock Text="{Binding Source={StaticResource MyButton}, Path=Data.Content}" />
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
