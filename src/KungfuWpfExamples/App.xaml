@@ -3,6 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:KungfuWpfExamples"
-    StartupUri="RelativeSourceElementName.xaml">
+    StartupUri="MvvmClose.xaml">
     <Application.Resources />
 </Application>

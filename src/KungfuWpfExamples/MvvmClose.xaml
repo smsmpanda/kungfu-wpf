@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="KungfuWpfExamples.MvvmClose"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:KungfuWpfExamples"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MvvmClose"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <StackPanel
+                Height="40"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Width="30"
+                    Margin="10"
+                    Content=" - ">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:ChangePropertyAction
+                                PropertyName="WindowState"
+                                TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                Value="{x:Static WindowState.Minimized}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button
+                    Width="30"
+                    Margin="10"
+                    Content=" [ ] ">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:ChangePropertyAction
+                                PropertyName="WindowState"
+                                TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                Value="{x:Static WindowState.Maximized}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button
+                    Width="30"
+                    Margin="10"
+                    Content=" X ">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
