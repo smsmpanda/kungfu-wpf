@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KungfuWpf.Shared\KungfuWpf.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
