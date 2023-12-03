@@ -35,6 +35,19 @@ namespace KungfuWpfExamples
         {
             return "Empty";
         }
+
+        public List<BindingViewModel> DataItems => new List<BindingViewModel> 
+        {
+           new BindingViewModel{ Message = "黑暗之女" },
+           new BindingViewModel{ Message = "狂战士" },
+           new BindingViewModel{ Message = "正义巨像" },
+           new BindingViewModel{ Message = "德邦总管" },
+           new BindingViewModel{ Message = "无畏战车" },
+           new BindingViewModel{ Message = "诡术妖姬" },
+           new BindingViewModel{ Message = "猩红收割者" },
+           new BindingViewModel{ Message = "远古恐惧" },
+           new BindingViewModel{ Message = "正义天使" }
+        };
     }
 
     public class MyResources

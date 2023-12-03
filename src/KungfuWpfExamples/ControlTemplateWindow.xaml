@@ -1,0 +1,181 @@
+﻿<Window
+    x:Class="KungfuWpfExamples.ControlTemplateWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KungfuWpfExamples"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ControlTemplateWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:BindingViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="Mybtn" TargetType="Button">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="40" />
+        </Style>
+        <ControlTemplate x:Key="MybtnCtlTemplate" TargetType="Button">
+            <Border
+                Name="Border"
+                Padding="{TemplateBinding Padding}"
+                Background="red"
+                BorderBrush="Orange"
+                BorderThickness="3"
+                CornerRadius="3"
+                TextBlock.Foreground="White">
+                <Grid>
+                    <Rectangle
+                        Name="FocusCue"
+                        SnapsToDevicePixels="True"
+                        Stroke="Black"
+                        StrokeDashArray="1 2"
+                        StrokeThickness="1"
+                        Visibility="Hidden" />
+
+                    <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RecognizesAccessKey="True" />
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Border" Property="Background" Value="Blue" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="Border" Property="Background" Value="IndianRed" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="Skyblue" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter TargetName="FocusCue" Property="Visibility" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="Border" Property="TextBlock.Foreground" Value="Gray" />
+                    <Setter TargetName="Border" Property="Background" Value="MistyRose" />
+                </Trigger>
+
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                AutoReverse="True"
+                                RepeatBehavior="Forever"
+                                Storyboard.TargetName="Border"
+                                Storyboard.TargetProperty="Background.Color"
+                                To="Blue"
+                                Duration="0:0:1" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetName="Border"
+                                Storyboard.TargetProperty="Background.Color"
+                                Duration="0:0:0.5" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock>Test</TextBlock>
+            <Button
+                Margin="0"
+                Padding="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Style="{StaticResource Mybtn}"
+                Template="{StaticResource MybtnCtlTemplate}">
+                A Simple Button with a Custom Template
+            </Button>
+            <Button
+                Margin="0"
+                Padding="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Style="{StaticResource Mybtn}"
+                Template="{StaticResource MybtnCtlTemplate}">
+                Anthor Button
+            </Button>
+            <Button
+                Margin="0"
+                Padding="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                IsEnabled="False"
+                Style="{StaticResource Mybtn}"
+                Template="{StaticResource MybtnCtlTemplate}">
+                Test Button
+            </Button>
+
+            <ListBox ItemsSource="{Binding DataItems}">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border>
+                                        <TextBlock Text="{Binding Message}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style TargetType="ListBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBox}">
+                                    <Border
+                                        Name="Border"
+                                        Background="Orange"
+                                        BorderBrush="DarkBlue"
+                                        BorderThickness="1"
+                                        CornerRadius="5">
+                                        <ScrollViewer Focusable="False">
+                                            <ItemsPresenter Margin="2" />
+                                        </ScrollViewer>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <EventTrigger RoutedEvent="ListBoxItem.MouseEnter">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetProperty="FontSize"
+                                                            To="20"
+                                                            Duration="0:0:1" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="ListBoxItem.MouseLeave">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            BeginTime="0:0:0.5"
+                                                            Storyboard.TargetProperty="FontSize"
+                                                            Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>
