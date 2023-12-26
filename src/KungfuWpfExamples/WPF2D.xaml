@@ -17,10 +17,62 @@
                 RadiusX="35"
                 RadiusY="25" />
         </GeometryGroup>
+        <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox" />
     </Window.Resources>
-    <Grid>
-        <StackPanel>
-            <!--<Rectangle
+    <Grid HorizontalAlignment="Center">
+        <local:ToggleSwitch Width="100" Height="40" />
+        <!--<Canvas Width="200" Height="200">
+            <Ellipse
+                Width="180"
+                Height="180"
+                Stroke="Black"
+                StrokeThickness="2" />
+            <Line
+                RenderTransformOrigin="0.5,1"
+                Stroke="Black"
+                StrokeThickness="3"
+                X1="100"
+                X2="100"
+                Y1="100"
+                Y2="40">
+                <Line.RenderTransform>
+                    <RotateTransform x:Name="hourTransform" Angle="{Binding HourAngle}" />
+                </Line.RenderTransform>
+            </Line>
+            <Line
+                RenderTransformOrigin="0.5,1"
+                Stroke="Black"
+                StrokeThickness="2"
+                X1="100"
+                X2="100"
+                Y1="100"
+                Y2="20">
+                <Line.RenderTransform>
+                    <RotateTransform x:Name="minuteTransform" Angle="{Binding MinuteAngle}" />
+                </Line.RenderTransform>
+            </Line>
+            <Line
+                RenderTransformOrigin="0.5,1"
+                Stroke="Red"
+                StrokeThickness="1"
+                X1="100"
+                X2="100"
+                Y1="100"
+                Y2="10">
+                <Line.RenderTransform>
+                    <RotateTransform x:Name="secondTransform" Angle="{Binding SecondAngle}" />
+                </Line.RenderTransform>
+            </Line>
+            <Ellipse
+                Canvas.Left="94"
+                Canvas.Top="94"
+                Width="12"
+                Height="12"
+                Fill="Black" />
+        </Canvas>-->
+        <!--<StackPanel>
+        -->
+        <!--<Rectangle
                 Width="100"
                 Height="30"
                 Fill="SkyBlue"
@@ -104,7 +156,7 @@
                     </GeometryGroup>
                 </Path.Data>
             </Path>-->
-            <!--<Canvas>
+        <!--<Canvas>
                 <TextBlock
                     Canvas.Left="20"
                     Canvas.Top="50"
@@ -180,7 +232,7 @@
                     </CombinedGeometry>
                 </Path.Data>
             </Path>-->
-            <!--<Path Stroke="Blue">
+        <!--<Path Stroke="Blue">
                 <Path.Data>
                     <PathGeometry>
                         <PathFigure IsClosed="True" StartPoint="10,100">
@@ -201,7 +253,7 @@
                     </PathGeometry>
                 </Path.Data>
             </Path>-->
-            <!--<Canvas>
+        <!--<Canvas>
                 <Path
                     Canvas.Top="20"
                     Stroke="Blue"
@@ -243,6 +295,7 @@
                     </Path.Data>
                 </Path>
             </Canvas>-->
-        </StackPanel>
+        <!--
+        </StackPanel>-->
     </Grid>
 </Window>
