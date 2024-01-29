@@ -20,11 +20,11 @@
                 RadiusX="35"
                 RadiusY="25" />
         </GeometryGroup>
+        <Style x:Key="ToggleSwitchStyle" TargetType="CheckBox" />
     </Window.Resources>
-    <!--<Grid>
+    <Grid>
         <StackPanel>
-    -->
-    <!--<Rectangle
+            <!--<Rectangle
                 Width="100"
                 Height="30"
                 Fill="SkyBlue"
@@ -108,7 +108,7 @@
                     </GeometryGroup>
                 </Path.Data>
             </Path>-->
-    <!--<Canvas>
+            <!--<Canvas>
                 <TextBlock
                     Canvas.Left="20"
                     Canvas.Top="50"
@@ -184,7 +184,7 @@
                     </CombinedGeometry>
                 </Path.Data>
             </Path>-->
-    <!--<Path Stroke="Blue">
+            <!--<Path Stroke="Blue">
                 <Path.Data>
                     <PathGeometry>
                         <PathFigure IsClosed="True" StartPoint="10,100">
@@ -205,7 +205,7 @@
                     </PathGeometry>
                 </Path.Data>
             </Path>-->
-    <!--<Canvas>
+            <!--<Canvas>
                 <Path
                     Canvas.Top="20"
                     Stroke="Blue"
@@ -247,21 +247,6 @@
                     </Path.Data>
                 </Path>
             </Canvas>-->
-    <!--
         </StackPanel>
-    </Grid>-->
-    <Border Background="Red" CornerRadius="30">
-        <Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-
-                </Grid.ColumnDefinitions>
-                <StackPanel Background="Black">
-                    <Button Width="100" Height="30">fsdfsf</Button>
-                </StackPanel>
-            </Grid>
-        </Grid>
-    </Border>
+    </Grid>
 </Window>
