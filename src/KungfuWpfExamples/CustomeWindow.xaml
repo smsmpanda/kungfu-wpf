@@ -9,6 +9,7 @@
     Width="800"
     Height="450"
     Background="#2d2d2d"
+    WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
@@ -59,7 +60,6 @@
                 Click="buttonMinimize_Click"
                 Content="&#xe604;"
                 FontFamily="/Resources/#iconfont"
-                FontSize="18"
                 Foreground="Green"
                 Style="{StaticResource TitleBarButtonStyle}" />
             <Button
@@ -70,7 +70,6 @@
                 Click="buttonMaximize_Click"
                 Content="&#xe601;"
                 FontFamily="/Resources/#iconfont"
-                FontSize="18"
                 Foreground="Green"
                 Style="{StaticResource TitleBarButtonStyle}" />
             <Button
@@ -81,7 +80,6 @@
                 Click="buttonClose_Click"
                 Content="&#xe644;"
                 FontFamily="/Resources/#iconfont"
-                FontSize="18"
                 Foreground="Green"
                 Style="{StaticResource TitleBarButtonStyle}" />
         </StackPanel>

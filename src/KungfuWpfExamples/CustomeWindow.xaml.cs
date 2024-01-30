@@ -40,11 +40,11 @@ namespace KungfuWpfExamples
             if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
-                this.btnMaximize.Content = "&#xe600;";
+                this.btnMaximize.Content = "\xe601";
             }
             else {
                 this.WindowState = WindowState.Maximized;
-                this.btnMaximize.Content = "&#xe601;";
+                this.btnMaximize.Content = "\xe600";
             }
         }
     }
