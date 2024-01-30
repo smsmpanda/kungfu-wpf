@@ -9,6 +9,7 @@
     Width="800"
     Height="450"
     Background="#2d2d2d"
+    MouseLeftButtonDown="Window_MouseLeftDown"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -25,6 +26,8 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border
                             Name="btn_border"
+                            Width="35"
+                            Padding="5"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="1">
@@ -48,40 +51,47 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button
-                x:Name="btnMinimize"
-                Width="30"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Click="buttonMinimize_Click"
-                Content="&#xe604;"
-                FontFamily="/Resources/#iconfont"
-                Foreground="Green"
-                Style="{StaticResource TitleBarButtonStyle}" />
-            <Button
-                x:Name="btnMaximize"
-                Width="30"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Click="buttonMaximize_Click"
-                Content="&#xe601;"
-                FontFamily="/Resources/#iconfont"
-                Foreground="Green"
-                Style="{StaticResource TitleBarButtonStyle}" />
-            <Button
-                x:Name="btnClose"
-                Width="30"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Click="buttonClose_Click"
-                Content="&#xe644;"
-                FontFamily="/Resources/#iconfont"
-                Foreground="Green"
-                Style="{StaticResource TitleBarButtonStyle}" />
-        </StackPanel>
+        <Grid Background="#FF7160E8">
+            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock
+                    Padding="10,0"
+                    FontSize="16"
+                    Foreground="#FFFFFF">
+                    标题
+                </TextBlock>
+            </WrapPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button
+                    x:Name="btnMinimize"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="buttonMinimize_Click"
+                    Content="&#xe604;"
+                    FontFamily="/Resources/#iconfont"
+                    Foreground="#FFFFFF"
+                    Style="{StaticResource TitleBarButtonStyle}" />
+                <Button
+                    x:Name="btnMaximize"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="buttonMaximize_Click"
+                    Content="&#xe601;"
+                    FontFamily="/Resources/#iconfont"
+                    Foreground="#FFFFFF"
+                    Style="{StaticResource TitleBarButtonStyle}" />
+                <Button
+                    x:Name="btnClose"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="buttonClose_Click"
+                    Content="&#xe644;"
+                    FontFamily="/Resources/#iconfont"
+                    Foreground="#FFFFFF"
+                    Style="{StaticResource TitleBarButtonStyle}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

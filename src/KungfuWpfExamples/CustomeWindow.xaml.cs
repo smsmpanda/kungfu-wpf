@@ -22,6 +22,7 @@ namespace KungfuWpfExamples
         public CustomeWindow()
         {
             InitializeComponent();
+            this.Icon = BitmapFrame.Create(new Uri("pack://application:,,,/Resources/app.ico"));
         }
 
         private void buttonMinimize_Click(object sender, RoutedEventArgs e)
@@ -46,6 +47,11 @@ namespace KungfuWpfExamples
                 this.WindowState = WindowState.Maximized;
                 this.btnMaximize.Content = "\xe600";
             }
+        }
+
+        private void Window_MouseLeftDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

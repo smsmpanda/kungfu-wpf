@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\app.ico" />
+    <None Remove="Resources\favicon.ico" />
     <None Remove="Resources\iconfont.ttf" />
   </ItemGroup>
 
@@ -21,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\iconfont.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
