@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Kungfu.CustomeControls\Kungfu.CustomeControls.csproj" />
     <ProjectReference Include="..\KungfuWpf.Shared\KungfuWpf.Shared.csproj" />
   </ItemGroup>
 

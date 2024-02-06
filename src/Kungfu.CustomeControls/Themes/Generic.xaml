@@ -1,0 +1,110 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:james="https://jamesnet.dev/xaml/presentation"
+    xmlns:local="clr-namespace:Kungfu.CustomeControls">
+
+    <Geometry x:Key="ThumbData">
+        M12 2C11.5 2 11 2.19 10.59 2.59L2.59 10.59C1.8 11.37 1.8 12.63 2.59 13.41L10.59 21.41C11.37 22.2 12.63 22.2 13.41 21.41L21.41 13.41C22.2 12.63 22.2 11.37 21.41 10.59L13.41 2.59C13 2.19 12.5 2 12 2M12 4L15.29 7.29L12 10.59L8.71 7.29L12 4M7.29 8.71L10.59 12L7.29 15.29L4 12L7.29 8.71M16.71 8.71L20 12L16.71 15.29L13.41 12L16.71 8.71M12 13.41L15.29 16.71L12 20L8.71 16.71L12 13.41Z
+    </Geometry>
+
+    <LinearGradientBrush x:Key="ThumbColor" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#B79248" />
+        <GradientStop Offset="0.5" Color="#997530" />
+        <GradientStop Offset="1" Color="#74592B" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ThumbOver" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#EDE1C8" />
+        <GradientStop Offset="0.5" Color="#DCC088" />
+        <GradientStop Offset="1" Color="#CBA14A" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ThumbDrag" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#473814" />
+        <GradientStop Offset="0.5" Color="#57421B" />
+        <GradientStop Offset="1" Color="#684E23" />
+    </LinearGradientBrush>
+
+    <Style x:Key="ThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="Background" Value="#010A13" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Path
+                            x:Name="path"
+                            Data="{StaticResource ThumbData}"
+                            Fill="{StaticResource ThumbColor}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="path" Property="Fill" Value="{StaticResource ThumbOver}" />
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter TargetName="path" Property="Fill" Value="{StaticResource ThumbDrag}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Thumb x:Key="SliderThumb" Style="{StaticResource ThumbStyle}" />
+
+    <SolidColorBrush x:Key="SliderColor" Color="#1E2328" />
+
+    <LinearGradientBrush x:Key="RangeColor" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Offset="0" Color="#463714" />
+        <GradientStop Offset="0.5" Color="#58471D" />
+        <GradientStop Offset="1" Color="#695625" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SliderOver" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Offset="0" Color="#795B28" />
+        <GradientStop Offset="0.5" Color="#C1963B" />
+        <GradientStop Offset="1" Color="#C8AA6D" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SliderDrag" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Offset="0" Color="#685524" />
+        <GradientStop Offset="0.5" Color="#55441B" />
+        <GradientStop Offset="1" Color="#463714" />
+    </LinearGradientBrush>
+
+    <Style TargetType="{x:Type local:RiotsSlider}">
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="SelectionStart" Value="0" />
+        <Setter Property="SelectionEnd" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RiotsSlider}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid Height="2.5" Margin="12,0,12,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="PART_SelectionRange" Background="{StaticResource RangeColor}" />
+                            <Border Grid.Column="1" Background="{StaticResource SliderColor}" />
+                        </Grid>
+                        <Track x:Name="PART_Track" Thumb="{StaticResource SliderThumb}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PART_Track, Path=Thumb.IsMouseOver}" Value="True">
+                            <Setter TargetName="PART_SelectionRange" Property="Background" Value="{StaticResource SliderOver}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PART_Track, Path=Thumb.IsDragging}" Value="True">
+                            <Setter TargetName="PART_SelectionRange" Property="Background" Value="{StaticResource SliderDrag}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
